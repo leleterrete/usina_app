@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../cadastro/cadastro_indicador.dart';
-import '../cadastro/cadastro_safra.dart';
-import '../cadastro/cadastro_unidade.dart';
 import '../cadastro/cadastro_equipamentos.dart';
+import '../cadastro/cadastro_indicador.dart';
 import '../cadastro/cadastro_medicao.dart';
-import '../cadastro/cadastro_unidademedida.dart';
+import '../cadastro/cadastro_safra.dart';
 import '../cadastro/cadastro_tipoinformacao.dart';
+import '../cadastro/cadastro_unidade.dart';
+import '../cadastro/cadastro_unidademedida.dart';
+import '../cadastro/cadastro_usuario.dart';
 
 class TelaPrincipal extends StatefulWidget {
   const TelaPrincipal({super.key});
@@ -25,9 +26,10 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
         const DrawerHeader(
           child: Text('Menu Principal', style: TextStyle(fontSize: 22)),
         ),
-
-        const ListTile(leading: Icon(Icons.home), title: Text('Início')),
-
+        const ListTile(
+          leading: Icon(Icons.home),
+          title: Text('Início'),
+        ),
         ListTile(
           leading: const Icon(Icons.app_registration),
           title: const Text('Cadastro'),
@@ -40,15 +42,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             });
           },
         ),
-
         if (cadastroAberto) ...[
-          // SAFRA
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Safra'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -57,14 +56,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               );
             },
           ),
-
-          // UNIDADE
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Unidade'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -73,20 +69,15 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               );
             },
           ),
-
-          // SETOR
           const ListTile(
             leading: Icon(Icons.chevron_right),
             title: Text('Setor'),
           ),
-
-          // EQUIPAMENTO
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Equipamento'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -95,14 +86,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               );
             },
           ),
-
-          // MEDIÇÃO
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Medição'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -111,14 +99,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               );
             },
           ),
-
-          // UNIDADE DE MEDIDA
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Unidade de Medida'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -127,14 +112,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               );
             },
           ),
-
-          // TIPO DE INFORMAÇÃO
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Tipo de Informação'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -143,14 +125,11 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               );
             },
           ),
-
-          // INDICADOR
           ListTile(
             leading: const Icon(Icons.chevron_right),
             title: const Text('Indicador'),
             onTap: () {
               Navigator.pop(context);
-
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -160,6 +139,19 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             },
           ),
         ],
+        ListTile(
+          leading: const Icon(Icons.chevron_right),
+          title: const Text('Usuário'),
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CadastroUsuarioPage(),
+              ),
+            );
+          },
+        ),
       ],
     );
   }
@@ -168,9 +160,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Usina App')),
-
       drawer: Drawer(child: montarMenu()),
-
       body: const Center(child: Text('Tela Principal')),
     );
   }
